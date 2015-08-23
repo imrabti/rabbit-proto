@@ -1,0 +1,18 @@
+server:
+  port: 7070
+application:
+  version: 1.0
+  formatted-version: (v1.0)
+endpoints:
+  health:
+    sensitive: false
+---
+spring:
+  profiles: production
+  datasource:
+    url: jdbc:mysql://localhost/proto
+    username: dbuser
+    password: dbpass
+    driver-class-name: com.mysql.jdbc.Driver
+server:
+  port: 8080
