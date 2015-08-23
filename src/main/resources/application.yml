@@ -3,9 +3,6 @@ server:
 application:
   version: 1.0
   formatted-version: (v1.0)
-endpoints:
-  health:
-    sensitive: false
 ---
 spring:
   profiles: production
