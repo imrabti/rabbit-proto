@@ -13,8 +13,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class RabbitmqProtoApplication implements CommandLineRunner {
     @Autowired
     private RabbitTemplate rabbitTemplate;
-    @Value("${nuvola.url}")
-    private String url;
+    @Value("${nuvola.avaya.exchange.topicUser}")
+    private String topicUser;
+    @Value("${nuvola.avaya.key.userKey}")
+    private String userKey;
+    @Value("${nuvola.avaya.key.userToKey}")
+    private String userKeyTo;
 
     public static void main(String[] args) {
         SpringApplication.run(RabbitmqProtoApplication.class, args);
@@ -22,7 +26,7 @@ public class RabbitmqProtoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-        rabbitTemplate.convertAndSend("NEW_USER_EXCHANGE", "user.*", "Hello there this is the first topic stuff...");
-        rabbitTemplate.convertAndSend("NEW_USER_EXCHANGE", "user.to.*", "this exclusive");
+        rabbitTemplate.convertAndSend(topicUser, userKey, "Hello there this is the first topic stuff...");
+        rabbitTemplate.convertAndSend(topicUser, userKeyTo, "this exclusive");
     }
 }
