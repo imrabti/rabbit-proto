@@ -1,0 +1,9 @@
+application:
+  version: 1.0
+  formatted-version: (v1.0)
+  name: rabbitproto
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+      name: ${application.name}
